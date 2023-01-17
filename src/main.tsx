@@ -14,13 +14,14 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-    errorElement: <NotFound />
+    element: <Home />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/testeini",
+    element: <Test />,
   }
-],
-{
-  basename: "/licjoseangelgodinez.github.io/"
-});
+]);
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

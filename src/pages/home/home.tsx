@@ -1,5 +1,5 @@
 import React from 'react'
-import monkey from '../../assets/monkey.png'
+import monkey from '../../assets/icons-monkey/full-monkey.webp';
 import '../../App.css'
 
 export default function Home() {

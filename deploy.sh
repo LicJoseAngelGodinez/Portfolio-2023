@@ -15,12 +15,6 @@ echo > .nojekyll
 # if you are deploying to a custom domain
 #echo 'www.angel-godinez.com' > CNAME
 
-var ghpages = require('gh-pages');
-var fs = require('fs');
-
-fs.writeFile('dist/CNAME', "www.angel-godinez.com", function(err) {});
-ghpages.publish('dist', function(err) {});
-
 git init
 git checkout -B main
 git add -A

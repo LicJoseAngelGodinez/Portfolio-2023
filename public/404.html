@@ -21,35 +21,88 @@
   </head>
 
     <style link="rel/stylesheet">
+
+        body {
+            margin: 0;
+        }
+
         .error {
             width: 100%;
             height: 100vh;
 
-            display: grid;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
 
-            grid-gap: 5px;
-            grid-auto-flow: column;
-
-            background-color: beige;
+            gap: 1rem;
         }
 
         .error img {
             width: 75px;
             height: 75px;
         }
+
+        .error.dark,
+        .error.dark a {
+            background-color: #383838;
+            color: white;
+        }
+
+        .error.light,
+        .error.light a {
+            background-color: white;
+            color: black;
+        }
+
+        #error-text {
+            font-size: 2rem;
+            text-align: center;
+            width: 80vw;
+        }
+
+        a {
+            display: flex;
+            height: 3em;
+            width: 100px;
+            align-items: center;
+            justify-content: center;
+            background-color: #eeeeee4b;
+            border-radius: 3px;
+            letter-spacing: 1px;
+            transition: all 0.2s linear;
+            cursor: pointer;
+            border: none;
+            background: #fff;
+            text-decoration: none;
+        }
+
+        a > svg {
+            margin-right: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+            transition: all 0.4s ease-in;
+        }
+
+        a:hover > svg {
+            font-size: 1.2em;
+            transform: translateX(-5px);
+        }
+
+        a:hover {
+            box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+            transform: translateY(-2px);
+        }
     </style>
     
 
     <body>
         <div class="error">
-            <div>
-                <img id='error-logo' src=''/>
-            </div>
-            <div>
-                <h1 id="error-text"></h1>
-            </div>
+            <img id='error-logo' src=''/>
+            <p id="error-text"></p>
+            <a href="/">
+                <span>Volver</span>
+            </a>
         </div>    
     </body>
 
@@ -66,9 +119,21 @@
             '/speak-monkey.webp'
         ]
 
+        const _date = new Date;
+        const time = _date.getHours();
+
+
+        const errorContainer = document.querySelector('.error');
+        if ( time < 7 || time > 20 ) {
+            errorContainer.classList.add('dark');
+        } else {
+            errorContainer.classList.add('light');
+        }
+
+
         const random = Math.floor(Math.random() * images.length);
 
         document.getElementById('error-logo').setAttribute('src', images[random]);
-        document.getElementById('error-text').innerHTML = `Ooops! There is nothing to ${text[random]} here.`;  
+        document.getElementById('error-text').innerHTML = `Ooops! There is nothing to <strong>${text[random]}</strong> here.`;  
     </script>
 </html>

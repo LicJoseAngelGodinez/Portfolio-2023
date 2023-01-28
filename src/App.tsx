@@ -1,13 +1,14 @@
-import { BrowserRouter as Router, Routes, Route, HashRouter } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
+
 import Home from './pages/home/home';
 import Test from './pages/test/test';
 import NotFound from './pages/notfound/not-found';
 
-import './assets/icons-monkey/see-monkey.webp';
-import './assets/icons-monkey/hear-monkey.webp';
-import './assets/icons-monkey/speak-monkey.webp';
+import { setBackground } from './utils/app-utils';
+
 
 function App() {
+  setBackground();
   return (
     <HashRouter>
       <Routes>

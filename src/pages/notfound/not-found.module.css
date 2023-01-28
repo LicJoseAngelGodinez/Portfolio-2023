@@ -1,7 +1,63 @@
 .errorPage {
+    width: 100%;
+    height: 100vh;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border-radius: 4px;
+    justify-content: center;
+
+    gap: 1rem;
+}
+
+.errorPage img {
+    width: 75px;
+    height: 75px;
+}
+
+.errorText {
+    font-size: 2rem;
+    text-align: center;
+    width: 80vw;
+}
+
+.errorText > strong {
+    text-decoration: underline;
+}
+
+a {
+    display: flex;
+    height: 3em;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+}
+
+.darkText {
+    color: white;
+}
+
+.lightText {
+    color: black;
+}
+
+.dark {
+    background-color: #180A0A;
+}
+
+.light {
+    background-color: #F1F6F9;
 }

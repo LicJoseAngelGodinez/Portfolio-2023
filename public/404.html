@@ -46,13 +46,13 @@
 
         .error.dark,
         .error.dark a {
-            background-color: #383838;
+            background-color: #180A0A;
             color: white;
         }
 
         .error.light,
         .error.light a {
-            background-color: white;
+            background-color: #F1F6F9;
             color: black;
         }
 
@@ -78,21 +78,13 @@
             text-decoration: none;
         }
 
-        a > svg {
-            margin-right: 5px;
-            margin-left: 5px;
-            font-size: 20px;
-            transition: all 0.4s ease-in;
-        }
-
-        a:hover > svg {
-            font-size: 1.2em;
-            transform: translateX(-5px);
-        }
-
         a:hover {
             box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
             transform: translateY(-2px);
+        }
+
+        #error-text > strong {
+            text-decoration: underline;
         }
     </style>
     
@@ -102,7 +94,7 @@
             <img id='error-logo' src=''/>
             <p id="error-text"></p>
             <a href="/">
-                <span>Volver</span>
+                <span>Home</span>
             </a>
         </div>    
     </body>
@@ -125,16 +117,16 @@
 
 
         const errorContainer = document.querySelector('.error');
-        if ( time < 7 || time > 20 ) {
-            errorContainer.classList.add('dark');
-        } else {
+        if ( time >= 7 && time < 19 ) {
             errorContainer.classList.add('light');
+        } else {
+            errorContainer.classList.add('dark');
         }
 
 
         const random = Math.floor(Math.random() * images.length);
 
         document.getElementById('error-logo').setAttribute('src', images[random]);
-        document.getElementById('error-text').innerHTML = `Ooops! There is nothing to <strong>${text[random]}</strong> here.`;  
+        document.getElementById('error-text').innerHTML = `There is nothing to <strong>${text[random]}</strong> here.`;  
     </script>
 </html>

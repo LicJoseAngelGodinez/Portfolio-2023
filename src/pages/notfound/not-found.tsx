@@ -1,23 +1,33 @@
-import MobileButton from '../../components/buttons/mobile-buttons/mobile-button'
-import Card from '../../components/card/card'
+import hearMonkey from '../../assets/icons-monkey/hear-monkey.webp';
+import seeMonkey from '../../assets/icons-monkey/see-monkey.webp';
+import speakMonkey from '../../assets/icons-monkey/speak-monkey.webp';
+
 import styles from './not-found.module.css'
+import { isDayTime } from '../../utils/app-utils';
 
 export default function NotFound() {
 
-    const props = {
-        text: 'Volver a inicio',
-        url: '/',
-    }
+    const { errorPage, errorText, light, lightText, dark, darkText } = styles;
+    const text = [
+        'see',
+        'hear',
+        'speak',  
+    ];
+    const images = [
+        seeMonkey,
+        hearMonkey,
+        speakMonkey
+    ];
+    const randomIndex = Math.floor(Math.random() * images.length);
+
+    const errorTextClass = `${errorText} ${isDayTime() ? lightText : darkText}`;
+    const errorLinkClass = `${isDayTime() ? `${lightText} ${light}` : `${darkText} ${dark}`}`;
 
     return (
-        <div className={styles.errorPage}>
-            <Card>
-                <>
-                    <h1>Oh cielos!</h1>
-                    <p>No hemos encontrado nada en esta ruta</p>
-                    <MobileButton text={props.text} url={props.url}/>
-                </>
-            </Card>
+        <div className={errorPage}>
+            <img typeof='image/webp' alt='NotFound' src={images[randomIndex]} />
+            <p className={errorTextClass}>There is nothing to <strong>{text[randomIndex]}</strong> here.</p>
+            <a className={errorLinkClass} href="/"><span>Home</span></a>
         </div>
     )
 }

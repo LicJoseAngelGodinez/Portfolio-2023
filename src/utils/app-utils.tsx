@@ -1,21 +1,18 @@
-import { useEffect, useState } from 'react'
+const isDayTime = () => {
+    const currentDate = new Date();
+    const currentHours = currentDate.getHours();
+    return !!(currentHours >= 7 && currentHours < 19)
+}
 
-const useCheckMobileScreen = () => {
-    const [width, setWidth] = useState(window.innerWidth);
-    const handleWindowSizeChange = () => {
-            setWidth(window.innerWidth);
+const setBackground = () => {
+    if ( isDayTime() ) {
+        document.body.style.backgroundColor = "#F1F6F9";
+    } else {
+        document.body.style.backgroundColor = "#180A0A";
     }
-
-    useEffect(() => {
-        window.addEventListener('resize', handleWindowSizeChange);
-        return () => {
-            window.removeEventListener('resize', handleWindowSizeChange);
-        }
-    }, []);
-
-    return (width <= 768);
 }
 
 export { 
-    useCheckMobileScreen
+    isDayTime,
+    setBackground
 }

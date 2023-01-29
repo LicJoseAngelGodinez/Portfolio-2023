@@ -8,7 +8,7 @@ const setBackground = () => {
     if ( isDayTime() ) {
         document.body.style.backgroundColor = "#F1F6F9";
     } else {
-        document.body.style.backgroundColor = "#180A0A";
+        document.body.style.backgroundColor = "#272727";
     }
 }
 

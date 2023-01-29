@@ -1,0 +1,21 @@
+.card {
+    background-color: var(--black);
+    border-radius: 4px;
+    padding: 0 2.5rem;
+    padding-bottom: 1rem;
+    padding-top: .7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.text {
+    color: var(--yellow);
+    font-size: 2rem;
+}
+
+a {
+    color: var(--black);
+}

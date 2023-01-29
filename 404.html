@@ -23,8 +23,26 @@
     <style link="rel/stylesheet">
 
         body {
-            font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-            margin: 0;
+            --yellow: #ffc600;
+            --black: #272727;
+            --pink: #f93d66;
+            --purple: #6d47d9;
+            --blue: #0c7bb3;
+            --softPink: #f2bae8;
+
+            margin: auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+                Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-weight: 900;
+            color: var(--black);
+            text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+
+            background-image: url("./topography.svg"),
+            linear-gradient(110deg, var(--pink), var(--purple));
+            background-size: 340px, auto;
+            min-height: calc(100vh - 100px);
+            background-attachment: fixed;
+            letter-spacing: -1px;
         }
 
         .error {
@@ -44,16 +62,22 @@
             height: 75px;
         }
 
-        .error.dark,
         .error.dark a {
             background-color: #180A0A;
             color: white;
         }
 
-        .error.light,
         .error.light a {
             background-color: #F1F6F9;
             color: black;
+        }
+
+        .light > #error-text {
+            color: var(--black);
+        }
+
+        .dark > #error-text {
+            color: white;
         }
 
         #error-text {

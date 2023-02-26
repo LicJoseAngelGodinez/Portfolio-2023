@@ -4,10 +4,12 @@ import speakMonkey from '../../assets/icons-monkey/speak-monkey.webp';
 
 import styles from './not-found.module.css'
 import { isDayTime } from '../../utils/app-utils';
+import Banner from '../../components/banner/banner';
+import DesktopButton from '../../components/buttons/desktop-buttons/desktop-button';
 
 export default function NotFound() {
 
-    const { errorPage, errorText, light, lightText, dark, darkText } = styles;
+    const { errorPage, container } = styles;
     const text = [
         'see',
         'hear',
@@ -20,14 +22,13 @@ export default function NotFound() {
     ];
     const randomIndex = Math.floor(Math.random() * images.length);
 
-    const errorTextClass = `${errorText} ${isDayTime() ? lightText : darkText}`;
-    const errorLinkClass = `${isDayTime() ? `${lightText} ${light}` : `${darkText} ${dark}`}`;
-
     return (
-        <div className={errorPage}>
+        <div className={container}>
             <img typeof='image/webp' alt='NotFound' src={images[randomIndex]} />
-            <p className={errorTextClass}>There is nothing to <strong>{text[randomIndex]}</strong> here.</p>
-            <a className={errorLinkClass} href="/"><span>Home</span></a>
+            <Banner>
+                <span>There is nothing to <strong>{text[randomIndex]}</strong> here.</span>
+                <DesktopButton text="Home" url="/"/>
+            </Banner>
         </div>
     )
 }

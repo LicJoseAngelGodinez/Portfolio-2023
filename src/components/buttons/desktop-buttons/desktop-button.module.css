@@ -1,7 +1,7 @@
 .desktopButton {
     display: flex;
     height: 3em;
-    width: 100px;
+    padding: 0 1rem;
     align-items: center;
     justify-content: center;
     background-color: #eeeeee4b;
@@ -14,11 +14,7 @@
     font-size: 1rem;
     font-weight: bold;
     color: var(--black);   
-}
-
-.desktopButton a {
     text-decoration: none;
-    color: var(--black);
 }
 
 .desktopButton:hover {

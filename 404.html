@@ -22,7 +22,7 @@
 
     <style link="rel/stylesheet">
 
-        body {
+        .container {
             --yellow: #ffc600;
             --black: #272727;
             --pink: #f93d66;
@@ -43,47 +43,40 @@
             min-height: calc(100vh - 100px);
             background-attachment: fixed;
             letter-spacing: -1px;
-        }
-
-        .error {
-            width: 100%;
-            height: 100vh;
 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
             gap: 1rem;
         }
 
-        .error img {
+        .banner {
+            background-color: var(--black);
+            color: var(--yellow);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media screen and (max-width: 320px) {
+            .banner {
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 190px) {
+            .banner {
+                padding: 1rem 0;
+            }
+        }
+
+        .container img {
             width: 75px;
             height: 75px;
-        }
-
-        .error.dark a {
-            background-color: #180A0A;
-            color: white;
-        }
-
-        .error.light a {
-            background-color: #F1F6F9;
-            color: black;
-        }
-
-        .light > #error-text {
-            color: var(--black);
-        }
-
-        .dark > #error-text {
-            color: white;
-        }
-
-        #error-text {
-            font-size: 2rem;
-            text-align: center;
-            width: 80vw;
         }
 
         a {
@@ -99,6 +92,9 @@
             cursor: pointer;
             border: none;
             background: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--black);   
             text-decoration: none;
         }
 
@@ -106,19 +102,15 @@
             box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
             transform: translateY(-2px);
         }
-
-        #error-text > strong {
-            text-decoration: underline;
-        }
     </style>
     
 
-    <body>
-        <div class="error">
-            <img id='error-logo' src=''/>
-            <p id="error-text"></p>
+    <body class="container">
+        <img id="error-logo" src="" alt="not found"/>
+        <div class="banner">
+            <span id="error-text"></span>
             <a href="/">
-                <span>Home</span>
+                Home
             </a>
         </div>    
     </body>
@@ -134,18 +126,7 @@
             '/see-monkey.webp',
             '/hear-monkey.webp',
             '/speak-monkey.webp'
-        ]
-
-        const _date = new Date;
-        const time = _date.getHours();
-
-
-        const errorContainer = document.querySelector('.error');
-        if ( time >= 7 && time < 19 ) {
-            errorContainer.classList.add('light');
-        } else {
-            errorContainer.classList.add('dark');
-        }
+        ];
 
 
         const random = Math.floor(Math.random() * images.length);

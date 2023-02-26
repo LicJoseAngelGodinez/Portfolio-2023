@@ -36,7 +36,12 @@ export default function Test() {
     <div className={container}>
       <Banner>
         <span>{errorMessage}</span>
-        {urlMaps && <DesktopButton text="Click me" url={urlMaps}/>}
+        {urlMaps && (
+          <>
+            <DesktopButton text="Click me" url={urlMaps}/>
+            <DesktopButton text="Home" url="/#/"/>
+          </>
+        )}
       </Banner>
     </div>
   )

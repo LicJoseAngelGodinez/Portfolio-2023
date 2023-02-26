@@ -7,8 +7,6 @@ import styles from './desktop-button.module.css'
 export default function DesktopButton(props: simpleButton) {
     const {text, url} = props;
   return (
-    <button className={styles.desktopButton}>
-        {url ? <a rel="noopener noreferrer" href={url}>{text}</a> : <span>{text}</span>}
-    </button>
+    <a className={styles.desktopButton} rel="noopener noreferrer" href={url}>{text}</a>
   )
 }

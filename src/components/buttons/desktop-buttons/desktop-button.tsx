@@ -8,7 +8,7 @@ export default function DesktopButton(props: simpleButton) {
     const {text, url} = props;
   return (
     <button className={styles.desktopButton}>
-        {url ? <a href={url}>{text}</a> : <span>{text}</span>}
+        {url ? <a rel="noopener noreferrer" href={url}>{text}</a> : <span>{text}</span>}
     </button>
   )
 }

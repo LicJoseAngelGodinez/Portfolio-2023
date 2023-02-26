@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Banner from '../../components/banner/banner';
+import DesktopButton from '../../components/buttons/desktop-buttons/desktop-button';
 import styles from './test.module.css'
 
 export default function Test() {
@@ -8,8 +10,7 @@ export default function Test() {
   const [urlMaps, setUrlMaps] = useState("");
 
   const {
-    card,
-    text
+    container
   } = styles;
   
   const success = (position:any) => {
@@ -32,9 +33,11 @@ export default function Test() {
 
 
   return (
-    <div className={card}>
-      <span className={text}>{errorMessage}</span>
-      {urlMaps && <a href={urlMaps} rel="noopener noreferrer" target="_blank">click me</a>}
+    <div className={container}>
+      <Banner>
+        <span>{errorMessage}</span>
+        {urlMaps && <DesktopButton text="Click me" url={urlMaps}/>}
+      </Banner>
     </div>
   )
 }

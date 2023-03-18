@@ -13,26 +13,26 @@ export default function Test() {
     container
   } = styles;
 
-  useEffect(() => {    
-  const success = (position:GeolocationPosition) => {
-    const { coords: { latitude, longitude } } = position;    
-    setValidLocation(checkFence({lat: latitude, lng: longitude}));
-    setUrlMaps(`https://www.google.com/maps/search/?api=1&query=${latitude}%2C${longitude}&hl=es-419`);
-    setErrorMessage("Click the link to check your location!");
-  }
+  useEffect(() => {
+    const success = (position:GeolocationPosition) => {
+      const { coords: { latitude, longitude } } = position;    
+      setValidLocation(checkFence({lat: latitude, lng: longitude}));
+      setUrlMaps(`https://www.google.com/maps/search/?api=1&query=${latitude}%2C${longitude}&hl=es-419`);
+      setErrorMessage("Click the link to check your location!");
+    }
 
-  const errorFn = ({code, message}:any) => {
-    setErrorMessage(message)
-  };
-  
-  navigator.geolocation.getCurrentPosition(success, errorFn);
+    const errorFn = ({code, message}:any) => {
+      setErrorMessage(message)
+    };
+    
+    navigator.geolocation.getCurrentPosition(success, errorFn);
   }, []);
 
   return (
     <div className={container}>
       <Banner>
         <span>{errorMessage}</span>
-        {validLocation ? (<span>{validLocation}</span>) : (<span>Invalid location</span>)}
+        {validLocation && (<span>{validLocation}</span>)}
         {urlMaps && (
           <>
             <DesktopButton text="Click me" url={urlMaps}/>

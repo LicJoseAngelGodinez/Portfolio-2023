@@ -63,7 +63,7 @@ const checkFence = (currentLocation: CurrentLocation) => {
         result = import.meta.env.VITE_APP_BETA_LOCATION;
     }
 
-    return result;
+    return result !== "" ? result : "Invalid location";
 }
 
 export { 

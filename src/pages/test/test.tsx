@@ -1,41 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Banner from '../../components/banner/banner';
 import DesktopButton from '../../components/buttons/desktop-buttons/desktop-button';
+import { checkFence } from '../../utils/app-utils';
 import styles from './test.module.css'
 
 export default function Test() {
-
-  const [errorCode, setErrorCode] = useState(0);
-  const [errorMessage, setErrorMessage] = useState("Waiting for your permission...");
-  const [urlMaps, setUrlMaps] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string>("Wait please...");
+  const [urlMaps, setUrlMaps] = useState<string>("");
+  const [validLocation, setValidLocation] = useState("");
 
   const {
     container
   } = styles;
-  
-  const success = (position:any) => {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    setUrlMaps(`https://www.google.com/maps/search/?api=1&query=${latitude}%2C${longitude}&hl=es-419`)
-    setErrorMessage("Click the link to check your location!")
+
+  useEffect(() => {    
+  const success = (position:GeolocationPosition) => {
+    const { coords: { latitude, longitude } } = position;    
+    setValidLocation(checkFence({lat: latitude, lng: longitude}));
+    setUrlMaps(`https://www.google.com/maps/search/?api=1&query=${latitude}%2C${longitude}&hl=es-419`);
+    setErrorMessage("Click the link to check your location!");
   }
 
   const errorFn = ({code, message}:any) => {
     setErrorMessage(message)
-    setErrorCode(code);
   };
   
-  const currentPosition = navigator.geolocation.getCurrentPosition(success, errorFn);
-
-  useEffect(() => {
-    console.log({errorCode, errorMessage});
-  });
-
+  navigator.geolocation.getCurrentPosition(success, errorFn);
+  }, []);
 
   return (
     <div className={container}>
       <Banner>
         <span>{errorMessage}</span>
+        {validLocation ? (<span>{validLocation}</span>) : (<span>Invalid location</span>)}
         {urlMaps && (
           <>
             <DesktopButton text="Click me" url={urlMaps}/>

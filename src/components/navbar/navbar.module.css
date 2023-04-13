@@ -1,0 +1,72 @@
+
+.navHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 2rem;
+    background-color: #000;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+}
+
+.navbar a {
+    margin: 0 2rem;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.navbar a:hover {
+    color: blue;
+}
+
+.navHeader .navBtn {
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.8rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .navHeader .navBtn {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .navHeader .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: #000;
+        transition: 1s;
+        transform: translateY(-100vh);
+    }
+    
+    .navHeader .responsiveNav {
+        transform: none;
+    }
+
+    .navbar .closeNavBtn {
+        position: absolute;
+        top: 2.5%;
+        right: 5%;
+    }
+
+    .navbar a {
+        font-size: 1.5rem;
+    }
+}

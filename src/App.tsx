@@ -1,5 +1,7 @@
 import { Routes, Route, HashRouter } from 'react-router-dom';
 
+import Navbar from './components/navbar/navbar';
+
 import Home from './pages/home/home';
 import Test from './pages/test/test';
 import NotFound from './pages/notfound/not-found';
@@ -11,6 +13,7 @@ function App() {
   setBackground();
   return (
     <HashRouter>
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/test' element={<Test />} />

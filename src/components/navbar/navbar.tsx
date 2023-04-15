@@ -16,9 +16,9 @@ function Navbar() {
         <button className={`${styles.navBtn} ${styles.closeNavBtn}`} onClick={toggleMenu}>
           <FaTimes />
         </button>
-        <Link to="/">Home</Link>
-        <Link to="/test">Test</Link>
-        <Link to="/NotFound">404</Link>
+        <Link onClick={toggleMenu} to="/">Home</Link>
+        <Link onClick={toggleMenu} to="/test">Test</Link>
+        <Link onClick={toggleMenu} to="/NotFound">404</Link>
       </nav>
       <button className={styles.navBtn} onClick={toggleMenu}>
         <FaBars />

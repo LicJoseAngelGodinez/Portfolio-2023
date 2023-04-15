@@ -13,12 +13,12 @@ function Navbar() {
   return (
     <header className={styles.navHeader}>
       <nav className={`${styles.navbar} ${menuOpen && styles.responsiveNav}`}>
-        <Link to="/">Home</Link>
-        <Link to="/test">Test</Link>
-        <Link to="/NotFound">404</Link>
         <button className={`${styles.navBtn} ${styles.closeNavBtn}`} onClick={toggleMenu}>
           <FaTimes />
         </button>
+        <Link to="/">Home</Link>
+        <Link to="/test">Test</Link>
+        <Link to="/NotFound">404</Link>
       </nav>
       <button className={styles.navBtn} onClick={toggleMenu}>
         <FaBars />

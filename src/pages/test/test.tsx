@@ -2,16 +2,11 @@ import { useEffect, useState } from 'react'
 import Banner from '../../components/banner/banner';
 import DesktopButton from '../../components/buttons/desktop-buttons/desktop-button';
 import { checkFence } from '../../utils/app-utils';
-import styles from './test.module.css'
 
 export default function Test() {
   const [errorMessage, setErrorMessage] = useState<string>("Wait please...");
   const [urlMaps, setUrlMaps] = useState<string>("");
   const [validLocation, setValidLocation] = useState("");
-
-  const {
-    container
-  } = styles;
 
   useEffect(() => {
     const success = (position:GeolocationPosition) => {
@@ -29,7 +24,7 @@ export default function Test() {
   }, []);
 
   return (
-    <div className={container}>
+    <div className="container">
       <Banner>
         <span>{errorMessage}</span>
         {validLocation && (<span>{validLocation}</span>)}

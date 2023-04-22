@@ -53,6 +53,11 @@ body {
   height: 75px;
 }
 
+.rowContainer {
+  display: flex;
+  gap: 1rem;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

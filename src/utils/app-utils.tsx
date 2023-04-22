@@ -89,36 +89,10 @@ const checkFence = (currentLocation: CurrentLocation) => {
     return result !== "" ? result : "Invalid location";
 }
 
-interface dataTime {
-    date_time: string
-}
-
-interface timeZoneTest {
-    data: dataTime,
-    loading: boolean,
-    error: string | undefined
-  }
-
-const fetchTimezone = (url:string):timeZoneTest => {
-    const [data, setData] = useState({date_time: ""});
-    const [error, setError] = useState();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch(url)
-        .then(response => response.json())
-        .then(setData)
-        .catch(setError)
-        .finally(() => setLoading(false));
-    }, [url]);
-
-    return { data, error, loading };
-};
-
 const validTime = (date:string) => {
     let isValidTime = false;
     const decodedDate = new Date(date);
-    const hour = decodedDate.getHours().toString();
+    const hour = decodedDate.getHours();
     const minutes = decodedDate.getMinutes();
     const {
         VITE_APP_BETA_EVENING_END_HOUR: eveningEnd,
@@ -175,7 +149,6 @@ const getMapsUrl = (params:mapsParams):string => {
 
 export { 
     checkFence,
-    fetchTimezone,
     getMapsUrl,
     isDayTime,
     setBackground,

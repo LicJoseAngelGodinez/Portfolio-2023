@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './navbar.module.css';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navbarStyles, setNavbarStyles] = useState(`${styles.navbar}`);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  useEffect(() => {
+    if (menuOpen) {
+      setNavbarStyles(`${styles.navbar} ${styles.responsiveNav}`);
+    } else {
+      setNavbarStyles(`${styles.navbar}`);
+    }
+  },[menuOpen]);
+
   return (
     <header className={styles.navHeader}>
-      <nav className={`${styles.navbar} ${menuOpen && styles.responsiveNav}`}>
+      <nav className={navbarStyles}>
         <button className={`${styles.navBtn} ${styles.closeNavBtn}`} onClick={toggleMenu}>
           <FaTimes />
         </button>

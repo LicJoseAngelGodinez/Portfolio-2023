@@ -3,11 +3,12 @@ import Banner from '../../components/banner/banner';
 import DesktopButton from '../../components/buttons/desktop-buttons/desktop-button';
 
 export default function Home() {
+  const { VITE_APP_DOMAIN: domainName } = import.meta.env;
   return (
     <div className="container">
         <object data={monkey} className="logo" width="100" height="100"> </object>
         <Banner>
-            <span>{import.meta.env.VITE_APP_DOMAIN}</span>
+            <span>{domainName}</span>
             <DesktopButton text="This is a WIP" url="/#/test" />
         </Banner>
     </div>

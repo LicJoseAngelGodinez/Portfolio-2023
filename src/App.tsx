@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import { Routes, Route, HashRouter } from 'react-router-dom';
+
+import { GlobalProvider } from './Context';
 
 import Navbar from './components/navbar/navbar';
 
@@ -10,15 +13,16 @@ import { setBackground } from './utils/app-utils';
 
 
 function App() {
-  setBackground();
   return (
     <HashRouter>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/test' element={<Test />} />
-        <Route path='/*' element={<NotFound />} />
-      </Routes>
+      <GlobalProvider>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/test' element={<Test />} />
+          <Route path='/*' element={<NotFound />} />
+        </Routes>
+      </GlobalProvider>
     </HashRouter>
   );
 }

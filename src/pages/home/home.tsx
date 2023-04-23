@@ -4,6 +4,7 @@ import DesktopButton from '../../components/buttons/desktop-buttons/desktop-butt
 
 export default function Home() {
   const { VITE_APP_DOMAIN: domainName } = import.meta.env;
+  
   return (
     <div className="container">
         <object data={monkey} className="logo" width="100" height="100"> </object>

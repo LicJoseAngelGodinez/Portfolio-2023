@@ -1,24 +1,16 @@
 import React from 'react';
 import styles from './loader.module.css';
+import { FaClock } from 'react-icons/fa';
 
 function Loader() {
 
-    const {
-        loaderBox,
-        loadingWrapper,
-        loader,
-        loaderInner,
-    } = styles;
+    const { fade } = styles;
 
   return (
-    <div className={loaderBox}>
-        <div className={loadingWrapper}>
-            <div className={loader}>
-                <div className={loaderInner}>
-                </div>
-            </div>
-        </div>
-    </div>
+    <>
+        <FaClock className={fade}/>
+        <span>Loading</span>
+    </>
   )
 }
 

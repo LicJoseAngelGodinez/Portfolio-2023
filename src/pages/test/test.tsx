@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+
 import Banner from '../../components/banner/banner';
 import Loader from '../../components/loader/loader';
 import DesktopButton from '../../components/buttons/desktop-buttons/desktop-button';
@@ -8,18 +10,9 @@ import {
   validTime,
 } from '../../utils/app-utils';
 
-interface dataTime {
-  date_time: string
-}
-
-interface timeZone {
-  data: dataTime,
-  loading: boolean,
-  error: string | undefined
-}
+const { VITE_APP_FIRST_FETCH_API_URL } = import.meta.env;
 
 export default function Test() {
-  const { VITE_APP_FIRST_FETCH_API_URL } = import.meta.env;
   const [errorMessage, setErrorMessage] = useState<string>("Wait please...");
   const [urlMaps, setUrlMaps] = useState<string>('');
   const [apiUrl, setApiUrl] = useState<string>('');
@@ -28,7 +21,6 @@ export default function Test() {
   const [validScheduleMessage, setValidScheduleMessage] = useState<string>('Out of schedule');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<object>();
-  const [data, setData] = useState<dataTime>({ date_time: ''});
 
   useEffect(() => {
     const success = (position:GeolocationPosition) => {
@@ -58,14 +50,13 @@ export default function Test() {
   useEffect(() => {
       fetch(apiUrl)
       .then(response => response.json())
-      .then(data => {
-        setData(data);        
-        setValidSchedule(validTime(data.date_time))
+      .then(data => {        
+        setValidSchedule(validTime(data.date_time));
+        setLoading(false);
       })
       .catch(error => {        
         setError(error);
-      })
-      .finally(() => setLoading(false));
+      });
   }, [apiUrl]);
 
   useEffect(() => {
@@ -73,15 +64,15 @@ export default function Test() {
       setValidScheduleMessage('We are ready!');
     }
   }, [validSchedule]);
-
+  
   return (
     <div className="container">
       {loading && (<Loader />)}
       {!loading && (
         <Banner>
           <span>{errorMessage}</span>
-          <span>{validScheduleMessage}</span>
-          {validLocation && (<span>{validLocation}</span>)}
+          <span>{validScheduleMessage} <FaClock /></span>
+          {validLocation && (<span>{validLocation} <FaMapMarkerAlt /></span>)}
           {urlMaps && (
             <div className='rowContainer'>
               <DesktopButton text="Click me" url={urlMaps}/>

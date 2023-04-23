@@ -8,14 +8,14 @@
 
 .loadingWrapper {
     display: inline;
-    width: 40px;
-    height: 40px;
+    width: .5rem;
+    height: .5rem;
     border-radius: 50%;
 }
 
 .loadingWrapper .loader {
-    height: 40px;
-    width: 40px;
+    height: 1rem;
+    width: 1rem;
     border: 3px solid #e5e5e5;
     border-radius: 50%;
     -webkit-animation: pulse1572 1200ms ease-in-out;
@@ -26,8 +26,8 @@
 
 .loadingWrapper .loader .loaderInner {
     display: block;
-    height: 100px;
-    width: 100px;
+    height: 2rem;
+    width: 2rem;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -48,31 +48,31 @@
 
 @keyframes pulse1572 {
     0% {
-        border: 3px solid #fff;
+        border: .2rem solid #fff;
     }
 
     50% {
-        border: 35px solid #fff;
+        border: 2.8rem solid #fff;
     }
 
     100% {
-        border: 3px solid #fff;
+        border: .2rem solid #fff;
     }
 }
 
 @keyframes innerPulse934 {
     0% {
-        height: 80px;
-        width: 80px;
+        height: 5rem;
+        width: 5rem;
     }
 
     50% {
-        height: 53.33333px;
-        width: 53.33333px;
+        height: 3rem;
+        width: 3rem;
     }
 
     100% {
-        height: 80px;
-        width: 80px;
+        height: 5rem;
+        width: 5rem;
     }
 }
